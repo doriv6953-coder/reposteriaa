@@ -1,0 +1,537 @@
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELA SWEET</title>  | Tortas, cupcakes y postres por WhatsApp</title>
+<meta name="description" content="Tortas, cupcakes, donas, galletas y postres hechos con amor por dos reposteras. Arma tu pedido y envíalo por WhatsApp.">
+<meta name="theme-color" content="#fff1ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%81%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --leche:#fff1ee; --ink:#3a1825; --fram:#d81b46; rosa:#ffc9d6; --mant:#ffd86b; --pist:#cfe8c2; --durazno:#ffb38a;
+  --display:'Bagel Fat One','Arial Rounded MT Bold','Trebuchet MS',sans-serif;
+  --texto:'Nunito','Segoe UI',system-ui,sans-serif;
+  --hh:68px; --sec:clamp(52px,7vw,92px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hh) + 60px)}
+body{font-family:var(--texto);font-size:1rem;line-height:1.6;background:var(--leche);color:var(--ink);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1200px;margin-inline:auto;padding-inline:5%}
+h1,h2{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:.01em}
+h2{font-size:clamp(2rem,4.6vw,3rem)}
+
+/* botones */
+.btn{font-weight:800;font-size:1rem;cursor:pointer;border:2.5px solid var(--ink);border-radius:99px;padding:12px 26px;background:var(--fram);color:#fff;box-shadow:0 4px 0 var(--ink);transition:transform .12s,box-shadow .12s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--ink)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.btn.claro{background:#fff;color:var(--ink)}
+.btn.wa{background:#25d366;color:#0b3d1e}
+.btn.mini{padding:8px 20px}
+
+/* cabecera */
+header{position:sticky;top:0;z-index:60;height:var(--hh);background:rgba(255,241,238,.92);backdrop-filter:blur(10px);border-bottom:2.5px solid var(--ink)}
+header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:1.7rem;line-height:1;color:var(--ink);text-decoration:none}
+.logo svg{width:30px;height:38px;flex:none}
+#cartbtn{position:relative;padding:9px 18px}
+#count{background:#fff;color:var(--fram);border:2px solid var(--ink);border-radius:99px;min-width:26px;height:26px;padding:0 6px;display:inline-grid;place-items:center;font-size:.85rem;font-weight:800}
+#count.bump{animation:bump .45s}
+@keyframes bump{30%{transform:scale(1.5) rotate(-8deg)}60%{transform:scale(.9)}}
+
+/* fondo de toda la página */
+body{background:#3a1825}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(58,24,37,.55),rgba(58,24,37,.55)),url("foto.jpg") center/cover no-repeat}
+.menu-cab h2,.menu-cab p,.contacto h2,.contacto>.wrap>p{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.wrap.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:min(72vh,560px)}
+.wrap.hero h1{font-family:'Pacifico','Lobster','Brush Script MT','Segoe Script',cursive;font-weight:400;font-size:clamp(3.2rem,11.5vw,7.4rem);line-height:1.2;color:#fff;text-shadow:0 4px 0 var(--fram),0 10px 26px rgba(0,0,0,.55);margin-bottom:30px;letter-spacing:0}
+.wrap.hero .acciones{justify-content:center}
+/* decoraciones de repostería */
+.wrap.hero{position:relative}
+.wrap.hero>div:not(.deco){position:relative;z-index:1}
+.deco{position:absolute;inset:0;pointer-events:none;z-index:0}
+.deco img{position:absolute;width:var(--w);height:auto;transform:rotate(var(--r));filter:drop-shadow(0 12px 14px rgba(0,0,0,.5));animation:flota 6s ease-in-out infinite;animation-delay:var(--dl,0s)}
+@keyframes flota{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-14px) rotate(calc(var(--r) + 4deg))}}
+.d1{top:3%;left:2%;--w:clamp(80px,12vw,165px);--r:-14deg}
+.d2{bottom:5%;left:8%;--w:clamp(70px,9.5vw,125px);--r:9deg;--dl:-2s}
+.d3{top:42%;left:-1%;--w:clamp(70px,9vw,120px);--r:-6deg;--dl:-4s}
+.d4{top:2%;right:3%;--w:clamp(85px,12.5vw,170px);--r:10deg;--dl:-1s}
+.d5{bottom:4%;right:4%;--w:clamp(90px,13vw,180px);--r:-9deg;--dl:-3s}
+.d6{top:42%;right:-1%;--w:clamp(70px,9vw,125px);--r:7deg;--dl:-5s}
+.contacto{position:relative;overflow:hidden}
+.contacto>.wrap{position:relative;z-index:1}
+.deco2 img{position:absolute;width:var(--w);transform:rotate(var(--r));filter:drop-shadow(0 12px 14px rgba(0,0,0,.5));animation:flota 7s ease-in-out infinite;animation-delay:var(--dl,0s)}
+.deco2{position:absolute;inset:0;pointer-events:none;z-index:0}
+.e1{top:8%;right:10%;--w:190px;--r:8deg}
+.e2{bottom:8%;right:3%;--w:150px;--r:-10deg;--dl:-3s}
+@media (max-width:1100px){.deco2{display:none}}
+@media (max-width:820px){
+  .d3,.d6{display:none}
+  .d1{top:1%;left:3%;--w:78px}.d4{top:1%;right:3%;--w:84px}
+  .d2{bottom:1%;left:4%;--w:70px}.d5{bottom:1%;right:4%;--w:84px}
+}
+@media (prefers-reduced-motion:reduce){.deco img,.deco2 img{animation:none}}
+/* título animado con brillo */
+.wrap.hero h1{position:relative;color:#fff;text-shadow:none;filter:drop-shadow(0 4px 0 var(--fram)) drop-shadow(0 0 14px rgba(255,190,225,.75));animation:tit-entra 1.1s cubic-bezier(.3,1.5,.5,1) both,tit-glow 3s ease-in-out 1.1s infinite}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .wrap.hero h1{background:linear-gradient(100deg,#fff 0%,#fff 38%,#ffc2e2 45%,#fff3b0 50%,#ffc2e2 55%,#fff 62%,#fff 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+    animation:tit-entra 1.1s cubic-bezier(.3,1.5,.5,1) both,tit-brillo 4.5s linear 1s infinite,tit-glow 3s ease-in-out 1.1s infinite}
+}
+@keyframes tit-entra{0%{opacity:0;transform:translateY(-40px) scale(.6) rotate(-4deg)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes tit-brillo{0%{background-position:120% 0}100%{background-position:-60% 0}}
+@keyframes tit-glow{0%,100%{filter:drop-shadow(0 4px 0 var(--fram)) drop-shadow(0 0 10px rgba(255,190,225,.55))}50%{filter:drop-shadow(0 4px 0 var(--fram)) drop-shadow(0 0 26px rgba(255,214,120,.95))}}
+.chispa{position:absolute;z-index:2;color:#fff7c2;font-size:var(--s,1.6rem);line-height:1;pointer-events:none;text-shadow:0 0 10px #ffd86b,0 0 22px #ff8fc4;animation:chispa 2.4s ease-in-out infinite;animation-delay:var(--dl,0s);opacity:0}
+@keyframes chispa{0%,100%{opacity:0;transform:scale(.2) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+.c1{top:6%;left:18%;--s:1.8rem}.c2{top:0;right:22%;--s:1.3rem;--dl:-.8s}.c3{top:34%;left:6%;--s:1.2rem;--dl:-1.5s}.c4{top:30%;right:8%;--s:1.9rem;--dl:-.4s}.c5{top:-8%;left:48%;--s:1.1rem;--dl:-1.9s}
+@media (prefers-reduced-motion:reduce){.wrap.hero h1{animation:none}.chispa{animation:none;opacity:.8}}
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(16px,4vw,48px);align-items:center;padding-block:clamp(32px,5vw,64px) clamp(28px,4vw,56px)}
+.hero h1{font-size:clamp(2.7rem,7.4vw,5.4rem);margin-bottom:18px}
+.acciones{display:flex;flex-wrap:wrap;gap:14px}
+.tortabox{display:flex;flex-direction:column;align-items:center;gap:8px}
+#torta{width:min(440px,92%);border:none;background:none;cursor:pointer;padding:0}
+#torta svg{width:100%;height:auto;display:block;overflow:visible}
+.pista{font-weight:800;font-size:.95rem;background:#fff;border:2.5px solid var(--ink);border-radius:99px;padding:4px 16px;transform:rotate(-2deg)}
+.aro{transform-origin:210px 230px;animation:giro 90s linear infinite}
+@keyframes giro{to{transform:rotate(360deg)}}
+.llama,.brillo{transform-box:fill-box;transform-origin:50% 100%;transition:opacity .25s,transform .25s}
+.llama{animation:parpadeo 1.5s ease-in-out infinite}
+.brillo{animation:brillo 1.5s ease-in-out infinite;transform-origin:50% 50%}
+@keyframes parpadeo{0%,100%{transform:scale(1,1) rotate(-1deg)}25%{transform:scale(.93,1.09) rotate(2.5deg)}50%{transform:scale(1.05,.95) rotate(-2.5deg)}75%{transform:scale(.96,1.06) rotate(1deg)}}
+@keyframes brillo{0%,100%{opacity:.35}50%{opacity:.55}}
+.humo{opacity:0;transform-box:fill-box}
+.apagada .llama,.apagada .brillo{animation:none;opacity:0;transform:scale(.2)}
+.apagada .humo{animation:humo 2.6s ease-out forwards}
+.apagada .humo:nth-of-type(2){animation-delay:.25s}
+@keyframes humo{0%{opacity:.75;transform:translateY(0) scaleX(.8)}100%{opacity:0;transform:translateY(-46px) scaleX(1.3)}}
+
+/* cinta */
+.cinta{background:var(--fram);color:#fff;border-block:2.5px solid var(--ink);overflow:hidden;white-space:nowrap}
+.cinta .pista-cinta{display:inline-flex;animation:cinta 32s linear infinite}
+.cinta span{font-family:var(--display);font-size:1.3rem;padding:10px 0 10px 28px;display:inline-flex;align-items:center;gap:28px}
+.cinta span::after{content:"";width:12px;height:12px;background:var(--mant);border:2px solid var(--ink);transform:rotate(45deg)}
+@keyframes cinta{to{transform:translateX(-50%)}}
+
+/* menú */
+.menu{padding-block:var(--sec) 24px}
+.menu-cab{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}
+.menu-cab p{max-width:26em}
+.buscar{position:relative;flex:1 1 260px;max-width:360px}
+.buscar svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px}
+.buscar input{width:100%;font:inherit;font-weight:600;padding:12px 18px 12px 46px;border:2.5px solid var(--ink);border-radius:99px;background:#fff;color:var(--ink)}
+.buscar input::placeholder{color:#7d5a68}
+.chips{position:sticky;top:var(--hh);z-index:40;background:var(--leche);display:flex;gap:10px;overflow-x:auto;padding:12px 5%;margin-inline:-5%;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font-weight:800;font-size:.95rem;cursor:pointer;border:2.5px solid var(--ink);border-radius:99px;padding:7px 16px;background:#fff;color:var(--ink);transition:background .15s,color .15s}
+.chip small{font-weight:700;opacity:.65;margin-left:4px}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px;padding:22px 0 40px}
+.card{background:#fff;border:2.5px solid var(--ink);border-radius:28px;box-shadow:0 6px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;animation:entra .5s cubic-bezier(.3,1.4,.5,1) both;animation-delay:var(--d,0ms)}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 0 var(--ink)}
+@keyframes entra{from{opacity:0;transform:translateY(24px) scale(.96)}}
+.foto{position:relative;aspect-ratio:4/3;border-bottom:2.5px solid var(--ink);overflow:hidden;background:var(--rosa)}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .foto img{transform:scale(1.07) rotate(-1deg)}
+.tag{position:absolute;left:10px;top:10px;background:#fff;border:2px solid var(--ink);border-radius:99px;padding:1px 11px 1px 8px;font-size:.78rem;font-weight:800;display:flex;gap:6px;align-items:center}
+.tag i{width:10px;height:10px;border-radius:50%;background:var(--c);border:1.5px solid var(--ink)}
+.rec{position:absolute;right:10px;top:10px;background:var(--mant);border:2px solid var(--ink);border-radius:99px;font-size:.78rem;font-weight:800;padding:1px 11px;transform:rotate(4deg)}
+.cuerpo{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cuerpo h3{font-size:1.06rem;font-weight:800;line-height:1.25}
+.fila{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;min-height:46px}
+.precio{font-family:var(--display);font-size:1.55rem;color:var(--fram);line-height:1}
+.paso{display:flex;align-items:center;gap:4px;border:2.5px solid var(--ink);border-radius:99px;background:var(--mant);padding:2px}
+.paso button{width:34px;height:34px;border:none;border-radius:50%;background:var(--ink);color:#fff;font-size:1.25rem;line-height:1;cursor:pointer}
+.paso b{min-width:28px;text-align:center}
+.nada{grid-column:1/-1;text-align:center;padding:48px 10px}
+.vuela{position:fixed;z-index:300;object-fit:cover;border-radius:18px;border:2.5px solid var(--ink);pointer-events:none}
+
+/* cómo pedir */
+.como{background:var(--mant);border-block:2.5px solid var(--ink);padding-block:var(--sec)}
+.como h2{margin-bottom:34px}
+.pasos{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pasos li{position:relative}
+.pasos li:not(:last-child)::after{content:"";position:absolute;top:32px;left:84px;right:-16px;border-top:3px dashed var(--ink)}
+.num{width:64px;height:64px;border-radius:50%;border:2.5px solid var(--ink);display:grid;place-items:center;font-family:var(--display);font-size:1.8rem;margin-bottom:14px;background:#fff;box-shadow:0 4px 0 var(--ink)}
+.pasos li:nth-child(1) .num{background:var(--rosa)}
+.pasos li:nth-child(2) .num{background:var(--pist)}
+.pasos li:nth-child(3) .num{background:#25d366}
+.pasos h3{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+.ventajas{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.ventajas span{background:#fff;border:2.5px solid var(--ink);border-radius:99px;padding:6px 18px;font-weight:800}
+
+/* contacto */
+.contacto{padding-block:var(--sec)}
+.contacto h2{margin-bottom:10px}
+.contacto>.wrap>p{max-width:32em;margin-bottom:32px}
+.chicas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;max-width:820px}
+.chica{display:flex;align-items:center;gap:18px;background:#fff;border:2.5px solid var(--ink);border-radius:28px;box-shadow:0 6px 0 var(--ink);padding:16px}
+.chica:nth-child(2){margin-top:22px}
+.chica img{width:118px;height:118px;border-radius:50%;border:2.5px solid var(--ink);object-fit:cover;flex:none}
+.chica b{display:block;font-family:var(--display);font-weight:400;font-size:1.45rem;line-height:1.1;margin-bottom:10px}
+
+/* pie */
+footer{background:var(--ink);color:#fff;text-align:center;padding:34px 5% 110px}
+footer b{font-family:var(--display);font-weight:400;font-size:1.6rem;display:block;margin-bottom:6px}
+
+/* pedido */
+.velo{position:fixed;inset:0;background:rgba(58,24,37,.55);opacity:0;pointer-events:none;transition:opacity .25s;z-index:90}
+.velo.on{opacity:1;pointer-events:auto}
+.cajon{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--leche);border-left:2.5px solid var(--ink);z-index:100;display:flex;flex-direction:column;transform:translateX(102%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
+.cajon.on{transform:none;visibility:visible;transition-delay:0s}
+.cajon-cab{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--fram);color:#fff;border-bottom:2.5px solid var(--ink);font-family:var(--display);font-size:1.5rem}
+.cajon-cab button{background:#fff;color:var(--ink);border:2.5px solid var(--ink);border-radius:50%;width:38px;height:38px;font-size:1.4rem;line-height:1;cursor:pointer}
+.items{flex:1;overflow:auto;padding:16px 18px}
+.it{display:flex;align-items:center;gap:12px;background:#fff;border:2.5px solid var(--ink);border-radius:20px;padding:8px;margin-bottom:12px}
+.it img{width:62px;height:62px;border-radius:14px;object-fit:cover;flex:none;border:2px solid var(--ink)}
+.it .dat{flex:1;min-width:0}
+.it .dat b{display:block;font-size:.95rem;line-height:1.25}
+.it .dat small{color:#7d5a68;font-weight:700}
+.it .paso button{width:28px;height:28px;font-size:1rem}
+.it .paso b{min-width:22px;font-size:.9rem}
+.it .quitar{background:none;border:none;font-size:1.2rem;cursor:pointer;padding:4px}
+.vacio{text-align:center;padding:44px 10px;font-weight:700}
+.vacio span{font-size:3rem;display:block}
+.sug h4{font-family:var(--display);font-weight:400;font-size:1.15rem;margin:18px 0 10px}
+.sug-fila{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-weight:700;font-size:.92rem}
+.sug-fila img{width:40px;height:40px;border-radius:12px;object-fit:cover;border:2px solid var(--ink)}
+.sug-fila span{flex:1}
+.sug-fila button{border:2px solid var(--ink);background:var(--mant);border-radius:99px;font-weight:800;padding:4px 14px;cursor:pointer}
+.datos{padding:14px 18px 16px;border-top:2.5px solid var(--ink);background:#fff;display:grid;gap:10px}
+.datos input,.datos select,.datos textarea{width:100%;font:inherit;font-weight:600;padding:10px 14px;border:2.5px solid var(--ink);border-radius:16px;background:var(--leche);color:var(--ink)}
+.datos textarea{resize:none;height:54px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.total{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:1.6rem}
+.total span:last-child{color:var(--fram)}
+.vaciar{background:none;border:none;text-decoration:underline;font-weight:700;color:#7d5a68;cursor:pointer;justify-self:center}
+.barra{position:fixed;left:50%;bottom:16px;transform:translate(-50%,160%);z-index:80;width:min(560px,calc(100% - 24px));display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 22px;font-size:1.05rem;transition:transform .4s cubic-bezier(.3,1.4,.5,1)}
+.barra.on{transform:translate(-50%,0)}
+.barra:hover{transform:translate(-50%,-2px)}
+.barra:active{transform:translate(-50%,3px)}
+body.abierto .barra{transform:translate(-50%,160%)}
+body.abierto{overflow:hidden}
+.toast{position:fixed;bottom:92px;left:50%;transform:translate(-50%,30px);opacity:0;background:var(--ink);color:#fff;font-weight:700;padding:12px 22px;border-radius:99px;z-index:200;transition:.3s;pointer-events:none;width:max-content;max-width:calc(100% - 24px);text-align:center}
+.toast.on{transform:translate(-50%,0);opacity:1}
+#confeti{position:fixed;inset:0;pointer-events:none;z-index:250}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .tortabox{order:-1}
+  #torta{width:min(300px,78%)}
+  .tortabox{margin-bottom:22px}
+  .hero h1{margin-bottom:14px}
+  .pasos{grid-template-columns:1fr;gap:26px}
+  .pasos li{padding-left:80px}
+  .pasos li::after{display:none}
+  .num{position:absolute;left:0;top:0;margin:0}
+  .chicas{grid-template-columns:1fr}
+  .chica:nth-child(2){margin-top:0}
+}
+@media (max-width:480px){
+  .logo{font-size:1.4rem}
+  #cartbtn .txt{display:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .cuerpo{padding:10px 10px 12px}
+  .cuerpo h3{font-size:.92rem}
+  .precio{font-size:1.25rem}
+  .fila{flex-wrap:wrap}
+  .btn.mini{padding:7px 14px;font-size:.9rem}
+  .tag{font-size:.68rem;padding:0 8px 0 6px}
+  .rec{font-size:.68rem;padding:0 8px}
+  .chica{flex-direction:column;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="VELA SWEET, ir al inicio">
+      <svg viewBox="0 0 30 38" aria-hidden="true"><path d="M15 2 C10 9 11 13 15 14 C19 13 20 9 15 2Z" fill="#ff9f1c" stroke="#3a1825" stroke-width="2"/><rect x="11" y="14" width="8" height="18" rx="2" fill="#ffc9d6" stroke="#3a1825" stroke-width="2"/><path d="M5 33 H25 V35 H5Z" fill="#d81b46" stroke="#3a1825" stroke-width="2"/></svg>
+      VELA SWEET
+    </a>
+    <button class="btn" id="cartbtn" data-a="abrir" aria-label="Abrir mi pedido">🛍️ <span class="txt">Mi pedido</span> <span id="count">0</span></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="wrap hero">
+    <div class="deco" aria-hidden="true">
+      <img class="d1" src="deco1.png" alt="">
+      <img class="d2" src="deco2.png" alt="">
+      <img class="d3" src="deco3.png" alt="">
+      <img class="d4" src="deco4.png" alt="">
+      <img class="d5" src="deco5.png" alt="">
+      <img class="d6" src="deco6.png" alt="">
+    </div>
+    <div>
+      <div class="chispas" aria-hidden="true"><span class="chispa c1">✦</span><span class="chispa c2">✦</span><span class="chispa c3">✦</span><span class="chispa c4">✦</span><span class="chispa c5">✦</span></div>
+      <h1>Vela Sweet </h1>
+      <div class="acciones">
+        <a class="btn" href="#menu">Ver los productos que se ofrece</a>
+        <a class="btn claro" href="#contacto">consultar con las chicas</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cinta" aria-hidden="true">
+    <div class="pista-cinta" id="cinta"></div>
+  </div>
+
+  <section class="wrap menu" id="menu">
+    <div class="menu-cab">
+      <div>
+        <h2>Elige tu antojo</h2>
+        <p>Toca Agregar para armar tu pedido. Lo revisas y lo envías por WhatsApp.</p>
+      </div>
+      <label class="buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3a1825" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20 l-4 -4"/></svg>
+        <input id="q" type="search" placeholder="Busca una torta, dona, flan…" aria-label="Buscar dulces" autocomplete="off">
+      </label>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </section>
+
+  <section class="como">
+    <div class="wrap">
+      <h2>Pedir es muy fácil</h2>
+      <ol class="pasos">
+        <li><div class="num">1</div><h3>Elige tus dulces</h3><p>Recorre el menú y toca Agregar. Puedes sumar todas las unidades que quieras.</p></li>
+        <li><div class="num">2</div><h3>Revisa tu pedido</h3><p>Abre Mi pedido, elige recojo o entrega y deja una nota con la fecha o una dedicatoria.</p></li>
+        <li><div class="num">3</div><h3>Envíalo por WhatsApp</h3><p>Te llega todo armado en un solo mensaje y las chicas te confirman.</p></li>
+      </ol>
+      <div class="ventajas"><span>🎀 Pedido fácil</span><span>📲 Directo a WhatsApp</span><span>🚚 Entregas a domicilio</span><span>💖 Hecho con amor</span></div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="deco2" aria-hidden="true">
+      <img class="e1" src="deco7.png" alt="">
+      <img class="e2" src="deco8.png" alt="">
+    </div>
+    <div class="wrap">
+      <h2>Escríbele a las chicas</h2>
+      <p>¿Una torta grande o una fecha especial? Escríbenos con tiempo y lo preparamos a tu gusto.</p>
+      <div class="chicas">
+        <div class="chica">
+          <!-- foto32.jpg = foto de 63361867 -->
+          <img src="foto32.jpg" alt="Repostera de VELA SWEET">
+          <div><b>63361867</b><a class="btn wa mini" href="https://wa.me/59163361867?text=%C2%A1Hola!%20Quisiera%20consultar%20por%20un%20pedido%20de%20VELA%20SWEET%20%F0%9F%92%96" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+        </div>
+        <div class="chica">
+          <!-- foto33.jpg = foto de 67987848 -->
+          <img src="foto33.jpg" alt="Repostera de VELA SWEET">
+          <div><b>67987848</b><a class="btn wa mini" href="https://wa.me/59167987848?text=%C2%A1Hola!%20Quisiera%20consultar%20por%20un%20pedido%20de%20VELA%20SWEET%20%F0%9F%92%96" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <b>VELA SWEET</b>
+  Pedidos por WhatsApp: 63361867 y 67987848
+</footer>
+
+<button class="btn barra" id="barra" data-a="abrir"><span>Ver mi pedido <span id="barraN"></span></span><span id="barraT"></span></button>
+
+<div class="velo" id="velo" data-a="cerrar"></div>
+<aside class="cajon" id="cajon" aria-label="Mi pedido" aria-hidden="true">
+  <div class="cajon-cab"><span>🛍️ Tu pedido</span><button data-a="cerrar" aria-label="Cerrar">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="datos">
+    <div class="dos">
+      <input id="nombre" placeholder="Tu nombre" autocomplete="name">
+      <select id="entrega" aria-label="Recojo o entrega"><option>Recojo</option><option>Entrega a domicilio</option></select>
+    </div>
+    <textarea id="nota" placeholder="Nota: fecha, dedicatoria, dirección"></textarea>
+    <select id="num" aria-label="Número de WhatsApp"><option value="59163361867">Enviar a WhatsApp 63361867</option><option value="59167987848">Enviar a WhatsApp 67987848</option></select>
+    <div class="total"><span>Total</span><span id="total">Bs. 0</span></div>
+    <button class="btn wa" data-a="enviar">📲 Pedir por WhatsApp</button>
+    <button class="vaciar" data-a="vaciar">Vaciar pedido</button>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+<canvas id="confeti"></canvas>
+
+<script>
+/* ---------- Datos ----------
+   [foto, emoji, nombre, precio Bs, categoría, recomendado (1 = sí, 0 = no)]
+   "foto1" significa que la imagen es foto1.jpg (misma carpeta que este archivo).
+   Para cambiar una imagen, reemplaza el archivo con el mismo nombre. */
+const P=[
+["foto1","🎂","Torta de Chocolate",120,"Tortas",1],
+["foto2","🍰","Torta de Fresa",110,"Tortas",0],
+["foto3","🎂","Torta Tres Leches",95,"Tortas",0],
+["foto4","🎂","Torta Red Velvet",130,"Tortas",1],
+["foto5","🎂","Torta de Zanahoria",100,"Tortas",0],
+["foto6","🎂","Torta de Vainilla",90,"Tortas",0],
+["foto7","🍰","Cheesecake de Frutos Rojos",85,"Tortas",0],
+["foto8","🧁","Cupcake de Vainilla",8,"Cupcakes",0],
+["foto9","🧁","Cupcake de Chocolate",9,"Cupcakes",0],
+["foto10","🧁","Cupcake Red Velvet",10,"Cupcakes",0],
+["foto11","🧁","Cupcake de Fresa",9,"Cupcakes",0],
+["foto12","🧁","Cupcake Unicornio",12,"Cupcakes",1],
+["foto13","🍩","Dona Glaseada Rosa",7,"Donas y Masas",0],
+["foto14","🍩","Dona de Chocolate",7,"Donas y Masas",0],
+["foto15","🥐","Croissant de Mantequilla",5,"Donas y Masas",0],
+["foto16","🥯","Rol de Canela",8,"Donas y Masas",0],
+["foto17","🧀","Roll de Queso",5,"Donas y Masas",0],
+["foto18","🧇","Waffle con Frutas",22,"Donas y Masas",0],
+["foto19","🥞","Panqueques con Miel",20,"Donas y Masas",0],
+["foto20","🍪","Galletas con Chispas",18,"Galletas y Bocados",0],
+["foto21","🍪","Galletas Decoradas ",30,"Galletas y Bocados",0],
+
+["foto22","🍫","Brownie con Nuez",12,"Galletas y Bocados",1],
+["foto23","🌈","Macarons Surtidos",15,"Galletas y Bocados",1],
+["foto24","🍬","Alfajores",15,"Galletas y Bocados",0],
+["foto25","🍮","Flan de Caramelo",10,"Postres",0],
+["foto26","🥧","Tarta de Limón",20,"Postres",0],
+["foto27","🥧","Pie de Manzana",50,"Postres",0],
+["foto28","🍓","Tarteleta de Frutas",14,"Postres",0],
+["foto29","🍨","Mousse de Maracuyá",12,"Postres",0],
+["foto30","🍡","Tiramisú en Vasito",15,"Postres",0],
+["foto31","🍒","Fresas con Chocolate",12,"Postres",1]
+];
+const COL={"Tortas":"#ff9db8","Cupcakes":"#c9b2ff","Donas y Masas":"#ffd86b","Galletas y Bocados":"#ffb38a","Postres":"#a9d99a"};
+const BY=Object.fromEntries(P.map(p=>[p[0],p]));
+const cats=["Todos",...new Set(P.map(p=>p[4]))];
+
+/* ---------- Utilidades ---------- */
+const $=s=>document.querySelector(s);
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const norm=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const foto=(slug,alt,cls="")=>`<img class="${cls}" src="${slug}.jpg" alt="${alt}" loading="lazy" width="400" height="300" onerror="this.style.visibility='hidden'">`;
+let filtro="Todos",busca="",cart={};
+try{const g=JSON.parse(localStorage.getItem("vela-pedido")||"{}");for(const k in g)if(BY[k]&&g[k]>0)cart[k]=g[k];}catch(e){}
+const guardar=()=>{try{localStorage.setItem("vela-pedido",JSON.stringify(cart));}catch(e){}};
+const totales=()=>{let n=0,t=0;for(const k in cart){n+=cart[k];t+=cart[k]*BY[k][3];}return{n,t};};
+
+/* ---------- Cinta ---------- */
+const palabras=["Tortas","Cupcakes","Donas","Galletas","Macarons","Postres","Pedidos por WhatsApp"];
+const setC=palabras.map(w=>`<span>${w}</span>`).join("");
+$("#cinta").innerHTML=setC+setC+setC+setC;
+
+/* ---------- Menú ---------- */
+function chips(){
+  $("#chips").innerHTML=cats.map(c=>{
+    const n=c==="Todos"?P.length:P.filter(p=>p[4]===c).length;
+    return `<button class="chip" aria-pressed="${c===filtro}" data-a="filtro" data-c="${c}">${c}<small>${n}</small></button>`;
+  }).join("");
+}
+function accion(s){
+  const c=cart[s]||0;
+  return c?`<div class="paso"><button data-a="menos" data-s="${s}" aria-label="Quitar uno">−</button><b>${c}</b><button data-a="mas" data-s="${s}" aria-label="Agregar uno">+</button></div>`
+          :`<button class="btn mini" data-a="mas" data-s="${s}">Agregar</button>`;
+}
+function tarjeta(p,n){
+  const [s,e,nom,pr,cat,rec]=p;
+  return `<article class="card" id="c-${s}" style="--d:${Math.min(n,10)*45}ms">
+    <div class="foto">${foto(s,nom)}<span class="tag" style="--c:${COL[cat]}"><i></i>${cat}</span>${rec?'<span class="rec">Recomendado</span>':''}</div>
+    <div class="cuerpo"><h3>${nom}</h3><div class="fila"><span class="precio">Bs. ${pr}</span><div class="accion">${accion(s)}</div></div></div>
+  </article>`;
+}
+function lista(){
+  const l=P.filter(p=>(filtro==="Todos"||p[4]===filtro)&&(!busca||norm(p[2]).includes(busca)));
+  $("#grid").innerHTML=l.length?l.map(tarjeta).join(""):`<div class="nada"><p style="font-size:2.6rem">🧁</p><p><b>No encontramos ese dulce.</b><br>Prueba con otra palabra o pregúntanos por WhatsApp.</p></div>`;
+}
+
+/* ---------- Pedido ---------- */
+function pintarPedido(){
+  const ids=Object.keys(cart),{n,t}=totales();
+  $("#count").textContent=n;
+  $("#barraN").textContent=n?`(${n})`:"";
+  $("#barraT").textContent="Bs. "+t;
+  $("#barra").classList.toggle("on",n>0);
+  $("#total").textContent="Bs. "+t;
+  let h=ids.length?ids.map(s=>{const p=BY[s],c=cart[s];
+    return `<div class="it">${foto(s,p[2])}<div class="dat"><b>${p[1]} ${p[2]}</b><small>Bs. ${p[3]} c/u = Bs. ${p[3]*c}</small></div>
+    <div class="paso"><button data-a="menos" data-s="${s}" aria-label="Quitar uno">−</button><b>${c}</b><button data-a="mas" data-s="${s}" aria-label="Agregar uno">+</button></div>
+    <button class="quitar" data-a="quitar" data-s="${s}" aria-label="Quitar ${p[2]}">🗑️</button></div>`}).join("")
+    :`<div class="vacio"><span>🎀</span>Aún no hay dulces en tu pedido.<br>¡Elige algo rico!</div>`;
+  const sug=P.filter(p=>p[3]<=15&&!cart[p[0]]).slice(0,3);
+  if(ids.length&&sug.length)h+=`<div class="sug"><h4>Completa tu pedido</h4>${sug.map(p=>`<div class="sug-fila">${foto(p[0],p[2])}<span>${p[2]} <small>Bs. ${p[3]}</small></span><button data-a="mas" data-s="${p[0]}" data-nofly="1">+ Agregar</button></div>`).join("")}</div>`;
+  $("#items").innerHTML=h;
+}
+function cambiar(s,d,vuela){
+  cart[s]=(cart[s]||0)+d;
+  if(cart[s]<=0)delete cart[s];
+  const a=document.querySelector(`#c-${s} .accion`);if(a)a.innerHTML=accion(s);
+  if(d>0&&vuela)volar(s);else if(d>0)bump();
+  guardar();pintarPedido();
+}
+function bump(){const c=$("#count");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");}
+function volar(s){
+  const im=document.querySelector(`#c-${s} .foto img`),t=$("#cartbtn");
+  if(RM||!im||!t||document.body.classList.contains("abierto")){bump();return;}
+  const a=im.getBoundingClientRect(),b=t.getBoundingClientRect();
+  if(!a.width||a.bottom<0||a.top>innerHeight){bump();return;}
+  const c=document.createElement("img");c.src=im.currentSrc||im.src;c.className="vuela";c.alt="";
+  Object.assign(c.style,{left:a.left+"px",top:a.top+"px",width:a.width+"px",height:a.height+"px"});
+  document.body.appendChild(c);
+  const dx=b.left+b.width/2-(a.left+a.width/2),dy=b.top+b.height/2-(a.top+a.height/2);
+  const an=c.animate([
+    {transform:"translate(0,0) scale(1)",opacity:1},
+    {transform:`translate(${dx*.55}px,${dy*.45-50}px) scale(.4) rotate(-8deg)`,opacity:1,offset:.5},
+    {transform:`translate(${dx}px,${dy}px) scale(.05) rotate(10deg)`,opacity:.3}
+  ],{duration:700,easing:"cubic-bezier(.5,0,.75,.4)"});
+  an.onfinish=()=>{c.remove();bump();};
+}
+function abrir(){$("#cajon").classList.add("on");$("#cajon").setAttribute("aria-hidden","false");$("#velo").classList.add("on");document.body.classList.add("abierto");}
+function cerrar(){$("#cajon").classList.remove("on");$("#cajon").setAttribute("aria-hidden","true");$("#velo").classList.remove("on");document.body.classList.remove("abierto");}
+function enviar(){
+  const ids=Object.keys(cart);
+  if(!ids.length){toast("Tu pedido está vacío 🎀");return;}
+  const nombre=$("#nombre").value.trim(),nota=$("#nota").value.trim();
+  let t=0,m=`🎀 *Pedido VELA SWEET* 🎀\n${nombre?"Cliente: "+nombre+"\n":""}Entrega: ${$("#entrega").value}\n${nota?"Nota: "+nota+"\n":""}\n`;
+  ids.forEach(s=>{const p=BY[s],sub=cart[s]*p[3];t+=sub;m+=`${p[1]} ${cart[s]} x ${p[2]} (Bs. ${p[3]} c/u) = Bs. ${sub}\n`;});
+  m+=`\n💰 *TOTAL: Bs. ${t}*\n\n¡Hola! Quisiera hacer este pedido, gracias 💖`;
+  confeti(innerWidth/2,innerHeight*.6,120);
+  window.open(`https://wa.me/${$("#num").value}?text=${encodeURIComponent(m)}`,"_blank");
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-a]");if(!b)return;
+  const a=b.dataset.a,s=b.dataset.s;
+  if(a==="mas")cambiar(s,1,!b.dataset.nofly);
+  else if(a==="menos")cambiar(s,-1);
+  else if(a==="quitar"){delete cart[s];const x=document.querySelector(`#c-${s} .accion`);if(x)x.innerHTML=accion(s);guardar();pintarPedido();}
+  else if(a==="abrir")abrir();
+  else if(a==="cerrar")cerrar();
+  else if(a==="enviar")enviar();
+  else if(a==="vaciar"){cart={};guardar();lista();pintarPedido();toast("Pedido vaciado");}
+  else if(a==="filtro"){filtro=b.dataset.c;chips();lista();}
+});
+$("#q").addEventListener("input",e=>{busca=norm(e.target.value.trim());lista();});
+addEventListener("keydown",e=>{if(e.key==="Escape")cerrar();});
+
+/* ---------- Toast y confeti ---------- */
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2400);}
+function confeti(x,y,n){
+  if(RM)return;
+  const cv=$("#confeti"),ctx=cv.getContext("2d");cv.width=innerWidth;cv.height=innerHeight;
+  const cols=["#d81b46","#ffd86b","#a9d99a","#ffc9d6","#c9b2ff","#ffb38a","#ffffff"];
+  const ps=Array.from({length:n},()=>({x,y,vx:(Math.random()-.5)*14,vy:-Math.random()*13-3,w:5+Math.random()*7,h:3+Math.random()*3,c:cols[Math.random()*cols.length|0],r:Math.random()*6,vr:(Math.random()-.5)*.4}));
+  let f=0;
+  (function paso(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ps.forEach(p=>{p.vy+=.32;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;ctx.globalAlpha=Math.max(0,1-f/130);ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();});
+    if(++f<130)requestAnimationFrame(paso);else ctx.clearRect(0,0,cv.width,cv.height);
+  })();
+}
+
+
+chips();lista();pintarPedido();
+</script>
+</body>
+</html>
